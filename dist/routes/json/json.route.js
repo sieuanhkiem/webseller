@@ -1,0 +1,25 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const sale_price_json_controller_1 = __importDefault(require("../../controllers/json/sale_price_json.controller"));
+const district_json_controller_1 = __importDefault(require("../../controllers/json/district_json.controller"));
+const ward_json_controller_1 = __importDefault(require("../../controllers/json/ward_json.controller"));
+const category_json_controller_1 = __importDefault(require("../../controllers/json/category_json.controller"));
+const product_json_controller_1 = __importDefault(require("../../controllers/json/product_json.controller"));
+const jsonRoute = express_1.default.Router();
+jsonRoute.post('/sale_price/sale_price_code', sale_price_json_controller_1.default.SalePriceBySizeCode);
+jsonRoute.post('/district/get_district_by_code', district_json_controller_1.default.GetDistrictByCityCode);
+jsonRoute.post('/ward/get_ward_by_code', ward_json_controller_1.default.GetWardByDistrictCode);
+jsonRoute.post('/category/category-new', category_json_controller_1.default.InsertCategory);
+jsonRoute.post('/category/category-update', category_json_controller_1.default.UpdateCategory);
+jsonRoute.post('/category/category-delete', category_json_controller_1.default.DeleteCategory);
+jsonRoute.post('/product/product-new', product_json_controller_1.default.InsertProduct);
+jsonRoute.post('/product/product-update/delete-img-color', product_json_controller_1.default.DeleteImageAndColorOfProduct);
+jsonRoute.post('/product/product-update', product_json_controller_1.default.UpdateProduct);
+jsonRoute.post('/product/product-delete', product_json_controller_1.default.DeleteProduct);
+jsonRoute.post('/product/insert-size-price', sale_price_json_controller_1.default.InsertSalePriceAndSize);
+jsonRoute.post('/product/delete-size-price', sale_price_json_controller_1.default.DeleteSizeAndPrice);
+exports.default = jsonRoute;
