@@ -179,6 +179,7 @@ export default class ProductService extends BaseService {
         } 
         catch (error: unknown) {
             logging.error(`[${ProductService.name}].[${this.GetRandomProduct.name}]: ${error}`);
+            await super.disconnectDatabase();
             return []
         }
     }
